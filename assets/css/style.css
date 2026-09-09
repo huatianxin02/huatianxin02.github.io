@@ -1,6 +1,7 @@
 /* =====================================================
-   我的作品集网站 - 样式
+   华天心的作品集网站 - 样式
    如果你想改颜色/字体，只需要改最上面的 :root 里的变量
+   深色模式颜色在 body.dark 里
    ===================================================== */
 
 :root {
@@ -15,11 +16,28 @@
   --bg: #ffffff;
   --bg-alt: #f5f7fb;
   --border: #e4e8f0;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --hero-grad: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%);
 
   /* 圆角和阴影 */
   --radius: 14px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- 深色模式（点击右上角 🌙 开启） ---------- */
+body.dark {
+  --text: #e6e9f0;
+  --text-muted: #9aa4b8;
+  --bg: #0f1524;
+  --bg-alt: #161d30;
+  --border: #2b3550;
+  --card-bg: #1a2238;
+  --nav-bg: rgba(15, 21, 36, 0.92);
+  --hero-grad: linear-gradient(180deg, #1d2847 0%, #0f1524 100%);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -39,6 +57,7 @@ body {
   background: var(--bg);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -52,7 +71,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -73,7 +92,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-links a {
@@ -87,6 +106,29 @@ body {
   color: var(--primary);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 深色模式切换按钮 */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* 手机菜单按钮 */
 .nav-toggle {
   display: none;
   background: none;
@@ -100,7 +142,7 @@ body {
 .hero {
   padding: 90px 0 70px;
   text-align: center;
-  background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%);
+  background: var(--hero-grad);
 }
 
 .avatar {
@@ -109,7 +151,7 @@ body {
   margin: 0 auto 24px;
   border-radius: 50%;
   overflow: hidden;
-  border: 5px solid #fff;
+  border: 5px solid var(--card-bg);
   box-shadow: var(--shadow);
 }
 
@@ -201,6 +243,23 @@ body {
   margin-bottom: 48px;
 }
 
+/* ---------- 子页面顶部横幅 ---------- */
+.page-hero {
+  padding: 64px 0 44px;
+  text-align: center;
+  background: var(--hero-grad);
+}
+
+.page-hero h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.page-hero p {
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
 /* ---------- 关于我 ---------- */
 .about-content {
   max-width: 720px;
@@ -223,7 +282,7 @@ body {
 }
 
 .info-list li {
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 14px 18px;
@@ -238,7 +297,7 @@ body {
 }
 
 .skill-card {
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 26px 22px;
@@ -270,7 +329,7 @@ body {
 }
 
 .project-card {
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -326,7 +385,7 @@ body {
 .contact-item {
   display: inline-block;
   padding: 14px 26px;
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--text);
@@ -339,6 +398,228 @@ body {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   color: var(--primary);
+}
+
+/* ---------- 文章页 ---------- */
+.post-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.post-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.post-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.post-card .post-date {
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.post-card p {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+}
+
+.post-card a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.post-card a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 相册页 ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.gallery-item .gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 14px 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+/* ---------- 简历页 ---------- */
+.resume-actions {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.resume-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 42px 48px;
+  box-shadow: var(--shadow);
+}
+
+.resume-head {
+  text-align: center;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+}
+
+.resume-head h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.resume-head p {
+  color: var(--text-muted);
+}
+
+.resume-section {
+  margin-bottom: 24px;
+}
+
+.resume-section h2 {
+  font-size: 1.2rem;
+  color: var(--primary);
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+  margin-bottom: 12px;
+}
+
+.resume-section ul {
+  list-style: none;
+}
+
+.resume-section li {
+  padding: 6px 0 6px 18px;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.resume-section li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.resume-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 打印时：只保留简历内容 */
+@media print {
+  .navbar,
+  .footer,
+  .theme-toggle,
+  #backToTop,
+  .resume-actions,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .resume-card {
+    box-shadow: none;
+    border: none;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* ---------- 返回顶部按钮 ---------- */
+#backToTop {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s, background 0.2s;
+  z-index: 999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: var(--primary-dark);
 }
 
 /* ---------- 底部 ---------- */
@@ -363,7 +644,7 @@ body {
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: #fff;
+    background: var(--card-bg);
     border-bottom: 1px solid var(--border);
     display: none;
     box-shadow: var(--shadow);
@@ -396,5 +677,9 @@ body {
 
   .section-title {
     font-size: 1.6rem;
+  }
+
+  .resume-card {
+    padding: 28px 20px;
   }
 }

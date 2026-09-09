@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简历 | 华天心的个人主页</title>
+  <meta name="description" content="华天心的个人简历。" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- 导航栏（和首页一致） -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html">华天心</a>
+      <nav class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#about">关于我</a>
+        <a href="index.html#skills">技能</a>
+        <a href="index.html#projects">作品</a>
+        <a href="blog.html">文章</a>
+        <a href="gallery.html">相册</a>
+        <a href="index.html#contact">联系我</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="切换深色模式">🌙</button>
+        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 页面标题 + 打印按钮 -->
+  <section class="page-hero no-print">
+    <div class="container">
+      <h1>📄 我的简历</h1>
+      <p>点击下方按钮可打印或另存为 PDF</p>
+      <div class="resume-actions" style="margin-top: 22px;">
+        <button id="printBtn" class="btn btn-primary">🖨 打印 / 保存为 PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 简历内容（打印时只保留这一块） -->
+  <section class="section">
+    <div class="container">
+      <div class="resume-card">
+
+        <!-- 头部：名字 + 基本信息，改这里 -->
+        <div class="resume-head">
+          <h1>华天心</h1>
+          <p>无业 · 邮箱：2870432094@qq.com · 网站：huatianxin02.github.io</p>
+        </div>
+
+        <!-- 个人简介，可修改 -->
+        <div class="resume-section">
+          <h2>个人简介</h2>
+          <ul>
+            <li>这里写一段简短的自我介绍，例如性格、特长、求职意向等。</li>
+          </ul>
+        </div>
+
+        <!-- 技能，可修改 -->
+        <div class="resume-section">
+          <h2>技能</h2>
+          <ul>
+            <li>网页设计 / 前端开发：HTML、CSS、JavaScript</li>
+            <li>其他技能可以继续添加</li>
+          </ul>
+        </div>
+
+        <!-- 教育经历，可修改 -->
+        <div class="resume-section">
+          <h2>教育经历</h2>
+          <ul>
+            <li>学校名称 · 专业 · 起止时间（待填写）</li>
+          </ul>
+        </div>
+
+        <!-- 工作 / 项目经历，可修改 -->
+        <div class="resume-section">
+          <h2>经历</h2>
+          <ul>
+            <li>这里写工作经历或做过的事情（待填写）</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 华天心 · 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="返回顶部">↑</button>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // 打印按钮：点击后弹出打印窗口，可“另存为 PDF”
+    document.getElementById("printBtn").addEventListener("click", function () {
+      window.print();
+    });
+  </script>
+</body>
+</html>
