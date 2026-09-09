@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ↓↓↓ 这里改网站名称，会显示在浏览器标签页上 ↓↓↓ -->
+  <title>我的作品集 | 个人主页</title>
+  <!-- ↓↓↓ 这里改网站描述，主要用于搜索引擎，可留空 ↓↓↓ -->
+  <meta name="description" content="这是我的个人作品集网站，展示我的项目、技能和联系方式。" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== 顶部导航栏 ===================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <!-- ↓↓↓ 这里改左上角的网站名字/你的名字 ↓↓↓ -->
+      <a class="logo" href="#home">我的名字</a>
+      <nav class="nav-links">
+        <a href="#home">首页</a>
+        <a href="#about">关于我</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">作品</a>
+        <a href="#contact">联系我</a>
+      </nav>
+      <!-- 手机端菜单按钮（无需修改） -->
+      <button class="nav-toggle" aria-label="打开菜单">☰</button>
+    </div>
+  </header>
+
+  <!-- ===================== 首页 / 欢迎区 ===================== -->
+  <section id="home" class="hero">
+    <div class="container">
+      <!-- ↓↓↓ 这里改你的头像（可选）：把图片放入 images 文件夹后改下面的文件名 ↓↓↓ -->
+      <!-- 没有头像时可以删掉下面这一整行 <div class="avatar">...</div> -->
+      <div class="avatar">
+        <img src="images/avatar.svg" alt="头像" />
+      </div>
+
+      <!-- ↓↓↓ 这里改你的名字和一句自我介绍 ↓↓↓ -->
+      <h1 class="hero-title">你好，我是 李明</h1>
+      <p class="hero-subtitle">设计师 / 开发者 / 创作者</p>
+
+      <!-- ↓↓↓ 这里改一句简短的个性化介绍 ↓↓↓ -->
+      <p class="hero-desc">
+        用心打磨每一个作品，用代码和设计让想法落地。
+      </p>
+
+      <!-- 按钮区，可自由增删 -->
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">查看我的作品</a>
+        <a href="#contact" class="btn btn-outline">联系我</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 关于我 ===================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">关于我</h2>
+      <p class="section-subtitle">简单介绍一下自己</p>
+
+      <!-- ↓↓↓ 这里写你的个人介绍，可以多写几句 ↓↓↓ -->
+      <div class="about-content">
+        <p>
+          你好！我是一名热爱创作的年轻人，平时喜欢研究设计、编程和摄影。
+          这里展示了我的一些作品，也记录了我的成长。
+        </p>
+        <p>
+          我的目标是用自己的技能做出对别人有帮助的东西。
+          欢迎通过下方的联系方式与我交流。
+        </p>
+      </div>
+
+      <!-- ↓↓↓ 这里写你的基本信息，可自由增删 ↓↓↓ -->
+      <ul class="info-list">
+        <li><strong>所在城市：</strong> 北京</li>
+        <li><strong>职业：</strong> 设计师 / 开发者</li>
+        <li><strong>邮箱：</strong> hello@example.com</li>
+        <li><strong>网站：</strong> www.example.com</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 技能 ===================== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">我的技能</h2>
+      <p class="section-subtitle">我会做的事情</p>
+
+      <!-- ↓↓↓ 技能卡片，想加就复制一段 <div class="skill-card">...</div>，想删就删掉 ↓↓↓ -->
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>网页设计</h3>
+          <p>使用 Figma 和 HTML/CSS 制作美观的网页界面。</p>
+        </div>
+        <div class="skill-card">
+          <h3>前端开发</h3>
+          <p>熟悉 HTML、CSS、JavaScript，能够独立完成网页。</p>
+        </div>
+        <div class="skill-card">
+          <h3>摄影</h3>
+          <p>喜欢记录生活中的美好瞬间。</p>
+        </div>
+        <div class="skill-card">
+          <h3>内容创作</h3>
+          <p>写文章、做视频，把想法分享给更多人。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 作品 / 项目 ===================== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">我的作品</h2>
+      <p class="section-subtitle">这里放一些项目或作品</p>
+
+      <!-- ↓↓↓ 作品卡片，想加就复制一段 <div class="project-card">...</div>，想删就删掉 ↓↓↓ -->
+      <div class="projects-grid">
+        <article class="project-card">
+          <!-- 项目配图：把图片放入 images 文件夹并改 src；没有图片就删掉 img 这一行 -->
+          <img src="images/project1.svg" alt="项目一封面" />
+          <div class="project-body">
+            <h3>项目名称一</h3>
+            <p>这里写这个作品的简要介绍，比如它是什么、解决了什么问题。</p>
+            <a href="#" class="project-link">查看详情 →</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/project2.svg" alt="项目二封面" />
+          <div class="project-body">
+            <h3>项目名称二</h3>
+            <p>这里写第二个作品的介绍。</p>
+            <a href="#" class="project-link">查看详情 →</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/project3.svg" alt="项目三封面" />
+          <div class="project-body">
+            <h3>项目名称三</h3>
+            <p>这里写第三个作品的介绍。</p>
+            <a href="#" class="project-link">查看详情 →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 联系我 ===================== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">联系我</h2>
+      <p class="section-subtitle">期待与你交流</p>
+
+      <!-- ↓↓↓ 这里改你的联系方式，可以添加更多 ↓↓↓ -->
+      <div class="contact-links">
+        <a href="mailto:hello@example.com" class="contact-item">📧 邮箱：hello@example.com</a>
+        <a href="#" class="contact-item">💬 微信：你的微信号</a>
+        <a href="#" class="contact-item">🐦 微博：你的微博</a>
+        <a href="#" class="contact-item">🔗 GitHub：你的用户名</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 底部 ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <!-- ↓↓↓ 这里改版权信息 ↓↓↓ -->
+      <p>© 2024 我的名字 · 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
