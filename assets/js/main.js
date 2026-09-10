@@ -67,4 +67,59 @@ if (backToTop) {
   });
 }
 
+/* ---------- 4. 滚动淡入动效（苹果官网那种缓缓浮现） ---------- */
+(function initReveal() {
+  // 这些元素会在滚动到视野里时淡入
+  const selectors = [
+    ".section-title",
+    ".section-subtitle",
+    ".about-content",
+    ".info-list li",
+    ".skill-card",
+    ".project-card",
+    ".post-card",
+    ".gallery-item",
+    ".contact-item",
+    ".resume-card",
+    ".page-hero h1",
+    ".page-hero p",
+  ];
+
+  const targets = document.querySelectorAll(selectors.join(","));
+  if (!targets.length) return;
+
+  // 浏览器不支持时直接显示，不做动画
+  if (!("IntersectionObserver" in window)) return;
+
+  targets.forEach((el) => {
+    el.classList.add("reveal");
+
+    // 同一组元素依次出现，形成错落的节奏感
+    const parent = el.parentElement;
+    if (parent) {
+      const siblings = Array.from(parent.children).filter((c) =>
+        c.classList.contains("reveal")
+      );
+      const index = siblings.indexOf(el);
+      if (index > 0) {
+        el.style.transitionDelay = Math.min(index * 90, 450) + "ms";
+      }
+    }
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+})();
+
 console.log("🌐 华天心的网站已加载");
