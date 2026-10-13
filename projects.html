@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品 | 华天心的个人主页</title>
+  <meta name="description" content="华天心独立开发的多端客户端应用：念起、心情笔记、余白·墨間、昼夜。" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="index.html">华天心</a>
+      <nav class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#about">关于我</a>
+        <a href="index.html#skills">技能</a>
+        <a href="projects.html">作品</a>
+        <a href="blog.html">文章</a>
+        <a href="gallery.html">相册</a>
+        <a href="index.html#contact">联系我</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="切换深色模式">夜</button>
+        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>我开发的软件</h1>
+      <p>四款跨端客户端应用 + 一套本地化 RAG 问答系统 · 独立完成</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- ==================== 01 念起 nianqi ==================== -->
+      <article class="project-case" id="nianqi">
+        <div class="case-head">
+          <span class="case-index">01</span>
+          <h2>念起 nianqi</h2>
+          <p class="case-tagline">跨端个人记录应用 · macOS 原生 / Android / Web</p>
+        </div>
+
+        <div class="case-tags">
+          <span>Swift 5 / SwiftUI</span>
+          <span>AppKit / Combine</span>
+          <span>Carbon 全局热键</span>
+          <span>Java / WebView</span>
+          <span>原生 JavaScript</span>
+          <span>IndexedDB</span>
+          <span>裸 swiftc 构建</span>
+          <span>aapt2 → apksigner</span>
+        </div>
+
+        <p class="case-lead">
+          手机优先的「今日必做 + 随心记」双区记录工具。同一份数据契约覆盖三个端，
+          刻意不做账号、云同步、协作与提醒推送 —— 纯本地、零第三方依赖、零运行时权限。
+        </p>
+
+        <!-- 设计理念（取自念起 DESIGN_GUIDE） -->
+        <div class="case-philosophy">
+          <h3>设计理念</h3>
+          <ul>
+            <li>
+              <strong>按心理契约分区，不按功能分区</strong>：「今日必做」和「随心记」是两种心理契约，
+              是两个<b>永不合并</b>的独立区域 —— 有承诺的事给成就感（打卡、连续天数），
+              无承诺的事给零压力（禁止任何统计）。把两者的统计混在一起，会同时破坏两边。
+            </li>
+            <li>
+              <strong>绝不使用负面信号</strong>：13 项否决清单里最核心的一条。逾期不标红、不做红点与负面计数、
+              断签不清零（最长连续永久保留）、习惯只停用不删除。因为负面反馈是「做了反而更差」的功能 ——
+              压力会杀死打开欲。
+            </li>
+            <li>
+              <strong>录入路径是唯一用秒数衡量的指标</strong>：从想到到记下 ≤ 3 秒。打开即聚焦光标、
+              顶部只有一个主输入框、Enter 即存、保存后保持聚焦可连续录入；明令禁止保存 toast、音效、
+              模态确认框与强制选择分类。唯一的反馈是新条目就地插入（≤180ms）。
+            </li>
+            <li>
+              <strong>审美是一等功能需求，但必须可验收</strong>：字号只有 4 档、字重只有 2 档、
+              每套主题颜色 token ≤10、动效 120–200ms；8 个主题/模式组合的对比度全部要过 4.5:1，
+              触控命中区 ≥44×44。
+            </li>
+            <li>
+              <strong>数据属于用户</strong>：导出是单文件全量 JSON（含墓碑记录）并带 schema 版本；
+              导入是合并而不是覆盖，只有本地侧有的必须保留；版本高于应用支持的 schema 直接拒绝，
+              绝不「尽力而为」地导入。
+            </li>
+          </ul>
+        </div>
+
+        <ul class="case-points">
+          <li>
+            <strong>把 macOS 客户端完整重写为纯 SwiftUI 原生应用</strong>：20 个 Swift 文件、4741 行，
+            无 Xcode 工程、无 SwiftPM、无第三方包，用裸 <code>swiftc</code> 构建出 2.5 MB 的 .app；
+            实现 <code>⌥Space</code> 全局速记、菜单栏常驻、开机自启、运行时切换 Dock 图标，
+            并与 Web 版共用同一份 <code>nianqi.json</code> 数据文件，来回切换不丢数据。
+          </li>
+          <li>
+            <strong>设计 <code>--selftest</code> 自检协议</strong>：把数据契约、8 组主题解析、
+            5 个图标变体的绘制像素、存档往返、合并语义、原生能力与渲染路径，全部变成可复跑的断言。
+          </li>
+          <li>
+            <strong>定位并修复「自检自身失效」的隐蔽缺陷</strong>：初版用 <code>ImageRenderer</code> 渲染
+            <code>ScrollView</code> 只得到纯背景图，而「不透明像素」指标在铺满底色的视图上恒等于采样点数 76200，
+            空白图被判为正常。改走 <code>NSHostingView + cacheDisplay</code> 自渲染路径，度量换成
+            「颜色数 + 非背景像素占比」后，同一条视图从 1 种颜色恢复到 1027 种 / 内容占比 41.3%，
+            并新增渲染路径回归守卫。
+          </li>
+          <li>
+            <strong>在 Google Maven 超时不可用的机器上绕过 Gradle / AGP</strong>，手工串起
+            <code>aapt2 → javac → d8 → zipalign → apksigner</code> 六步流水线，产出 50468 字节、
+            零运行时权限的 Android 16（<code>targetSdk 36</code>）应用，构建零网络依赖、可复现。
+          </li>
+          <li>
+            <strong>靠模拟器端到端验证抓出 5 个缺陷并修复</strong>：Android 13+ 预测式返回改用
+            <code>OnBackInvokedCallback</code>；系统栏 insets 在页面就绪前派发导致的时序竞态；
+            分享内容被静默丢弃；勾选圆触控命中区从 24px 修正为 44px；墨主题说明文字对比度从 2.78:1 提亮到 4.51:1。
+          </li>
+          <li>
+            <strong>建立三层 CDP 自动化验证，共 78 项断言</strong>（功能 37 / 视觉 22 / 端到端 19），
+            并用 CDP 沿 DOM 逐层合成含 alpha 的背景色做 WCAG 对比度审计，驱动设计级修复，
+            正文对比度从 3.64 提升到 9.74。
+          </li>
+        </ul>
+
+        <div class="case-stats">
+          <div><b>4741 行</b><small>Swift 源码</small></div>
+          <div><b>2.5 MB</b><small>.app 产物</small></div>
+          <div><b>50468 字节</b><small>APK 产物</small></div>
+          <div><b>78 项</b><small>自动化断言</small></div>
+          <div><b>3.64 → 9.74</b><small>正文对比度</small></div>
+          <div><b>零权限 · 零依赖</b><small>纯本地运行</small></div>
+        </div>
+
+        <!-- 念起 项目配图：把图片放进 images/projects/ 后替换下面的文件名即可 -->
+        <div class="case-gallery">
+          <figure>
+            <img src="images/projects/nianqi-1.svg" alt="念起 macOS 主界面" />
+            <figcaption>macOS 原生主界面（SwiftUI）</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/nianqi-2.jpg" alt="念起 Android 版" />
+            <figcaption>Android 版（WebView + 原生桥）</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/nianqi-3.jpg" alt="念起 Web 版" />
+            <figcaption>Web 版（纯静态）</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ==================== 02 心情笔记 MoodNotes ==================== -->
+      <article class="project-case" id="mood">
+        <div class="case-head">
+          <span class="case-index">02</span>
+          <h2>心情笔记 MoodNotes</h2>
+          <p class="case-tagline">五端本地情绪日记 · macOS / Android / HarmonyOS / iOS / Web</p>
+        </div>
+
+        <div class="case-tags">
+          <span>Swift / Cocoa</span>
+          <span>WKWebView 外壳</span>
+          <span>Java</span>
+          <span>ArkTS（HarmonyOS NEXT）</span>
+          <span>SwiftUI</span>
+          <span>LocalAuthentication</span>
+          <span>AVAudioRecorder</span>
+          <span>hvigor / DevEco</span>
+        </div>
+
+        <p class="case-lead">
+          完全本地的情绪日记，三种心情按颜色分类，支持文字、图片与录音。
+          架构是「一份共享网页界面 + N 个平台原生外壳」，各端桥协议保持一致，
+          网页代码在移植时一行未改。
+        </p>
+
+        <!-- 设计理念（取自心情笔记设计文档） -->
+        <div class="case-philosophy">
+          <h3>设计理念</h3>
+          <ul>
+            <li>
+              <strong>情绪优先于文字：「不写字，也算记录」</strong>：只点一下心情、一个字都不写，
+              也算今天来过；允许无标题。因为真正的低潮期人是写不出字的 ——
+              如果记录一定要以「写一段话」为代价，它一定会在最需要它的日子断掉。
+            </li>
+            <li>
+              <strong>日记真正的难点不是「写」，是「翻」</strong>：写的时候有情绪，翻的时候找不到。
+              于是做了历史上的今天、情绪对冲（今天难过就翻出过去开心的）、加权轮播回忆，
+              以及用「现在的自己」给旧笔记批注 —— 留言挂在原笔记上，不新建、也不改动原笔记的时间。
+            </li>
+            <li>
+              <strong>数据是你的，不是我的</strong>：Android 清单里连 <code>INTERNET</code> 权限都没有，
+              无账号、无服务器。导出就是原件（完整备份 + 图片音频原文件），也能导出一篇一个
+              <code>.md</code>；每次保存前自动快照，解析失败时从最近可用快照自愈，损坏现场留成文件。
+            </li>
+            <li>
+              <strong>界面要能退到背景里去</strong>：支持背景图片 / GIF / 10 秒内短视频；
+              从背景图自动提取 3 种主色并做对比度保护（太浅或太深都保证文字可读），
+              静观模式下一段时间不操作，界面整体淡出、只留背景。
+            </li>
+            <li>
+              <strong>刻意不做</strong>：云同步（数据主权 &gt; 便利）、社交与排行榜（情绪不是拿来比较的）、
+              AI 代写日记（日记一旦是生成的，它就失去了全部意义）、「断签清零」式惩罚、广告与付费墙。
+            </li>
+          </ul>
+        </div>
+
+        <ul class="case-points">
+          <li>
+            <strong>用一套架构把同一产品铺到 5 个平台</strong>：网页层 5358 行
+            <code>app.js</code> + 1675 行 <code>styles.css</code> + 514 行
+            <code>index.html</code>；各端桥命令统一为
+            <code>loadNotes / saveNotes / saveAsset / recStart / recStop / setReminder</code> 等一组协议。
+          </li>
+          <li>
+            <strong>建立 9 套、共 529 项自动化测试并全部通过</strong>
+            （mac2 / mac3 / feishu / mood / skin / picker / still / android / io），
+            并把测试从 <code>/tmp</code> 迁入仓库内目录，避免被系统清理。
+          </li>
+          <li>
+            <strong>从崩溃日志定位并根治 Android 端「一打开就闪退」</strong>：
+            日志为 <em>PendingIntents attached to actions with remote inputs must be mutable</em>，
+            链路是 <code>onResume → refreshOngoingNote → showQuickNote → notify</code>；
+            根因是带 <code>RemoteInput</code> 的 PendingIntent 在 API 31+ 必须为
+            <code>FLAG_MUTABLE</code>。按系统版本分流修复，并给全部通知调用加兜底 —— 发通知失败绝不能让 App 崩。
+          </li>
+          <li>
+            <strong>把 macOS 外壳做成系统级应用</strong>：菜单栏图标按「今天记了没」显示实心/空心、
+            悬停显示连续天数、合盖唤醒跨天自动刷新、Touch ID 解锁、开机自启；
+            数据快照 + 损坏文件留证 + 自动挑选最新有效备份自愈 + 一键恢复，并支持 Markdown / PDF 导出。
+          </li>
+          <li>
+            <strong>Android 端全程纯离线</strong>：只申请录音、通知、开机自启、振动四项权限，
+            <strong>不含 <code>INTERNET</code></strong>；数据落应用私有目录，开机自动重排每日与每周提醒。
+          </li>
+          <li>
+            <strong>从零搭 HarmonyOS NEXT 的 ArkTS 桥</strong>：同步桥 + 启动时把网页资源拷进沙箱、
+            用 <code>file://</code> 同源打开，使图片与音频可直接显示；
+            用 hvigor 编译出签名 HAP 492603 字节（期间因中文路径被构建检查拒绝，定位后改纯英文路径解决）。
+          </li>
+        </ul>
+
+        <div class="case-stats">
+          <div><b>5 个</b><small>覆盖平台</small></div>
+          <div><b>529 项</b><small>自动化测试全绿</small></div>
+          <div><b>1346 行</b><small>Android Java</small></div>
+          <div><b>577 行</b><small>HarmonyOS ArkTS</small></div>
+          <div><b>1385 行</b><small>macOS Swift 外壳</small></div>
+          <div><b>无网络权限</b><small>纯离线运行</small></div>
+        </div>
+
+        <!-- 心情笔记 项目配图 -->
+        <div class="case-gallery">
+          <figure>
+            <img src="images/projects/mood-1.jpg" alt="心情笔记 macOS 主界面" />
+            <figcaption>macOS 主界面（菜单栏 + 连续天数）</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/mood-2.jpg" alt="心情笔记 通知栏直接回复" />
+            <figcaption>Android 版</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/mood-3.jpg" alt="心情笔记 HarmonyOS 版" />
+            <figcaption>HarmonyOS NEXT 版（ArkTS）</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ==================== 03 余白 Yohaku · 墨間 Sumi ==================== -->
+      <article class="project-case" id="yohaku">
+        <div class="case-head">
+          <span class="case-index">03</span>
+          <h2>余白 Yohaku · 墨間 Sumi</h2>
+          <p class="case-tagline">macOS 待办双形态 + Android 版 · 暖纸日间 / 夜色墨线</p>
+        </div>
+
+        <div class="case-tags">
+          <span>Swift 5 / SwiftUI</span>
+          <span>XCTest</span>
+          <span>MenuBarExtra</span>
+          <span>SMAppService</span>
+          <span>Java / WebView</span>
+          <span>Canvas 2D</span>
+          <span>xcodebuild</span>
+          <span>CDP 三层验证</span>
+        </div>
+
+        <p class="case-lead">
+          两款共用一套数据模型与设计语言的 macOS 原生应用 —— 余白是暖纸日间，墨間是夜色墨线 ——
+          再合并为一款 Android 应用。纯本机、无账号、无云同步。
+          昼夜切换不是换色，而是整套视觉语言的切换。
+        </p>
+
+        <!-- 设计理念（取自余白 / 墨間设计文档） -->
+        <div class="case-philosophy">
+          <h3>设计理念</h3>
+          <ul>
+            <li>
+              <strong>昼夜不是换个色，是换一整套视觉语言</strong>：纸面靠柔和投影表达卡片边界，
+              墨色靠 1px 细线（暗色投影会浮成灰块）；不用纯黑 —— 没有蓝调的黑久看眼睛发涩；
+              也不用纯白 —— 正文留一点和纸那样的微黄。连字重字距、插图画法与文案都随昼夜切换。
+              两面的主题色与背景各自独立持久化，白天挑的颜色不会被黑夜覆盖。
+            </li>
+            <li>
+              <strong>颜色通道留给状态，不留给分类</strong>：主题色由用户自选（预设 + 取色器），
+              所以任何写死的文字色都会在某个主题下失效。改为由代码按当前主题色动态派生两个 token：
+              <code>--accent-text</code>（混到 ≥4.6:1，供文字用）与
+              <code>--accent-contrast</code>（叠在实底上的文字色）。
+              <b>用户能改的颜色不能承载语义。</b>
+            </li>
+            <li>
+              <strong>语言也是设计</strong>：文案全部为中性陈述、不用感叹号、不喊口号 ——
+              「今天，慢慢来。」「今夜的事」「谢谢你，给今天留了一点时间。」
+              标题用细字重 + 宽字距表现安静，靠留白而不是装饰。
+            </li>
+            <li>
+              <strong>坏数据先留证，绝不覆盖</strong>：先写临时文件并落盘再原子改名，保证不出现半个 JSON；
+              读取失败时返回哨兵值让界面层留证，而不是把坏数据覆盖掉。
+            </li>
+          </ul>
+        </div>
+
+        <ul class="case-points">
+          <li>
+            <strong>实现并逐字对齐两端一致的重复规则引擎</strong>：按天/周用天数差取模、
+            按月用月份差取模并夹取到 <code>min(锚点日, 当月天数)</code>，
+            使「每月 31 号」在 2 月正确落到 28 日；连续天数仅对「每天」习惯累加，
+            循环加安全上限兜底防死循环，并用 XCTest 覆盖重复规则与本机历史保存。
+          </li>
+          <li>
+            <strong>把「一套结构、两种视觉语言」做进同一个应用</strong>：日间是纸面底色 + 投影卡片 +
+            填充式插图 + 字重 600 / 字距 −0.022em；夜间是炭黑底 + 1px 细线卡片无投影 + 纯线描插图 +
+            字重 300 / 字距 +0.075em。两面的主题色与背景各自独立持久化互不覆盖，连文案与品牌名都随昼夜切换。
+          </li>
+          <li>
+            <strong>用代码按当前主题色动态派生对比度 token</strong>：不写死颜色，而是派生
+            <code>--accent-text</code>（往黑/白方向混到 ≥4.6:1，供文字用）与
+            <code>--accent-contrast</code>（实底上的文字色），
+            使用户无论选哪个预设或用取色器自定义，正文都保证可读。
+          </li>
+          <li>
+            <strong>把视觉质量变成可测量断言</strong>：横向溢出 0px、最小字号 ≥ 11px、
+            可点元素全部 ≥ 44px 高、日历格最小 62×44px、正文对比度 14.84:1（日间）/ 14.73:1（夜间）。
+          </li>
+          <li>
+            <strong>建立三层自动化验证共 96 项断言</strong>（功能与规则 53 / 布局与可读性 28 / Android 端到端 15）。
+          </li>
+          <li>
+            <strong>Android 数据写入保证不留半个 JSON</strong>：先写临时文件并 <code>fsync</code> 落盘再
+            <code>rename</code>；读取失败时返回哨兵值，让网页层留证而不是覆盖坏数据。
+            构建与安装脚本也做了工程化：改名 → ad-hoc 重签 → 摘除开发构建 → 原子替换并保留最近 3 份归档。
+          </li>
+        </ul>
+
+        <div class="case-stats">
+          <div><b>1964 + 1522 行</b><small>两款 Swift 源码</small></div>
+          <div><b>11 个</b><small>XCTest 用例</small></div>
+          <div><b>5.5 / 3.8 MB</b><small>.app 产物</small></div>
+          <div><b>46143 字节</b><small>APK 产物</small></div>
+          <div><b>96 项</b><small>自动化断言</small></div>
+          <div><b>≥ 4.6:1</b><small>对比度动态派生</small></div>
+        </div>
+
+        <!-- 余白 / 墨間 项目配图 -->
+        <div class="case-gallery">
+          <figure>
+            <img src="images/projects/yohaku-1.jpg" alt="余白 日间界面" />
+            <figcaption>余白（日间 · 暖纸）</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/yohaku-2.jpg" alt="墨間 夜间界面" />
+            <figcaption>墨間（夜间 · 墨线）</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ==================== 04 昼夜 Zhouye ==================== -->
+      <article class="project-case" id="zhouye">
+        <div class="case-head">
+          <span class="case-index">04</span>
+          <h2>昼夜 Zhouye</h2>
+          <p class="case-tagline">轻量 Android 待办应用 · 补充项目</p>
+        </div>
+
+        <div class="case-tags">
+          <span>Java</span>
+          <span>WebView</span>
+          <span>aapt2 → apksigner</span>
+          <span>Node + CDP</span>
+        </div>
+
+        <!-- 设计理念（与余白 / 墨間共用同一套） -->
+        <div class="case-philosophy">
+          <h3>设计理念</h3>
+          <ul>
+            <li>
+              <strong>与余白 / 墨間共用同一套设计理念</strong>：按心理契约分区（重复习惯 / 收集箱），
+              且绝不使用负面信号 —— 逾期不用红色，改用琥珀色安静地提示；
+              断签不清零，只重置当前计数，最长连续永久保留。
+            </li>
+            <li>
+              <strong>审美必须可验收</strong>：把「好看」翻译成可测量的数字 ——
+              触控命中区 ≥44px、最小字号 ≥11px、横向溢出 0px，并用 22 项断言把它们守住。
+            </li>
+          </ul>
+        </div>
+
+        <ul class="case-points">
+          <li>
+            用 Java 296 行 + 915 行 Web 层实现 Android 待办应用，
+            <code>minSdk 26 / targetSdk 36</code>、零运行时权限、关闭自动备份。
+          </li>
+          <li>
+            <strong>定位并修复 macOS <code>bash 3.2</code> 下 <code>set -u</code> 把空数组视为未定义、
+            导致正式构建直接失败</strong>的问题，使原本只能出 debug 包的工程恢复正式出包能力。
+          </li>
+          <li>
+            打包链路 <code>aapt2 → javac → d8 → zipalign -p 4 → apksigner</code>（v1/v2/v3 全开），
+            并用 <code>zipalign -c 4</code> 复验；编译输出先落日志再单独判退出码，避免管道吞掉编译失败。
+          </li>
+          <li>
+            用 Node + CDP 驱动真实 Chrome 做 <strong>22 项断言</strong>
+            （每 N 天/周锚点、短月夹取、连续天数、44px 触控、11px 字号、刷新后持久化），22/22 通过。
+          </li>
+        </ul>
+
+        <div class="case-stats">
+          <div><b>296 行</b><small>Java 代码</small></div>
+          <div><b>22 项</b><small>CDP 断言</small></div>
+          <div><b>160846 字节</b><small>APK 产物</small></div>
+          <div><b>零运行时权限</b><small>纯本地</small></div>
+        </div>
+
+        <!-- 昼夜 项目配图 -->
+        <div class="case-gallery">
+          <figure>
+            <img src="images/projects/zhouye-1.jpg" alt="昼夜 Android 待办" />
+            <figcaption>昼夜 Android 版</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ==================== 05 汽车工艺文档智能问答助手（RAG） ==================== -->
+      <article class="project-case" id="rag">
+        <div class="case-head">
+          <span class="case-index">05</span>
+          <h2>汽车工艺文档智能问答助手</h2>
+          <p class="case-tagline">基于 RAG 的本地化文档问答系统 · AI 应用方向</p>
+        </div>
+
+        <div class="case-tags">
+          <span>Python</span>
+          <span>RAG 检索增强生成</span>
+          <span>混合检索 · BM25</span>
+          <span>RRF 倒数排名融合</span>
+          <span>Qwen3-Embedding-4B</span>
+          <span>Dify 1.17.1</span>
+          <span>RAGFlow DeepDoc</span>
+          <span>Docker Compose</span>
+          <span>LM Studio 本地推理</span>
+        </div>
+
+        <p class="case-lead">
+          汽车电子的工艺文档表格密集、术语专业、版本迭代频繁 —— 工程师查一条锡炉温度标准值，
+          要在数十页 PDF 里翻出 17 处「锡炉」逐个核对；而直接问通用大模型，会得到一个
+          「看起来对、但没法用」的答案。我独立实现了三套 RAG 系统，让模型只依据企业自有文档作答，
+          每条答案都能回溯到原文位置，没有依据时主动拒答。
+        </p>
+
+        <!-- 自研链路的处理流程（纯 CSS 绘制，无需图片） -->
+        <div class="pipeline">
+          <span class="step">解析 · 章节/表格/页码</span><span class="arrow">→</span>
+          <span class="step">领域词典 + bigram</span><span class="arrow">→</span>
+          <span class="step">hybrid 分块</span><span class="arrow">→</span>
+          <span class="step">Qwen3-Embedding-4B</span><span class="arrow">→</span>
+          <span class="step">numpy 向量库 + BM25</span><span class="arrow">→</span>
+          <span class="step">RRF 融合召回</span><span class="arrow">→</span>
+          <span class="step">关键词重排</span><span class="arrow">→</span>
+          <span class="step">防幻觉提示词</span><span class="arrow">→</span>
+          <span class="step">带引用的答案</span>
+        </div>
+
+        <ul class="case-points">
+          <li>
+            <strong>从零实现自研 RAG 全链路（11 个模块、零外部服务依赖）</strong>：解析层用 pdfplumber
+            提取表格、并按字号与编号识别章节；分词层自建汽车电子术语词典（波峰焊、锡炉温度、三防漆、AQL、
+            GB/T 2828.1）配合 bigram；分块层用「章节感知 + 滑动窗口」的 hybrid 策略；
+            索引层是本地 numpy 持久化向量库 + BM25 倒排索引；检索层双路并行后用 RRF（k=60）融合；
+            <b>溯源信息做到「章节 → 页码 → 片段类型」三级</b>。
+          </li>
+          <li>
+            <strong>关键决策：向量模型选型。</strong>沿用英文向量模型时，中文工艺查询的 Top1 命中率只有
+            <b>60%</b>，且相似度全部挤在 0.67–0.68 这个极窄区间 —— 这是典型的<b>语义空间坍缩</b>，
+            模型根本没能力区分这些中文文本。换成中文原生 Qwen3-Embedding-4B（2560 维）后，
+            Top1 命中 60% → <b>100%</b>、MRR 0.717 → 1.000。
+            结论：中文领域做 RAG，中文原生向量模型是及格线，不是优化项。
+          </li>
+          <li>
+            <strong>定位并修复「答案为空但 token 拉满」</strong>：接口返回 completion_tokens 高达 1024+，
+            但答案内容为空，单题耗时 27–175 秒。根因是模型默认开启<b>思考模式</b>，推理过程占满全部输出配额，
+            轮到真正的答案时已无 token，而 OpenAI 兼容接口只读取正文内容字段。
+            在请求组装层强制注入关闭思考的参数后，同题耗时降到 <b>3.8–9.1 秒</b>、答案完整准确；
+            该开关在 9B 与 27B 两款模型上均验证有效，属跨模型通用开关（另外四种方案全部无效）。
+          </li>
+          <li>
+            <strong>修复 PDF 表格文字污染正文导致的溯源错位</strong>：表格内容同时出现在正文流和表格对象中，
+            同一段文字被重复计入，导致表格编号整体错位一位 —— 这类 bug 不报错，只是页码全差一页。
+            改为按真实表标题归并表格行、并从正文中剔除已被表格捕获的文字后，
+            索引片段从 128 收敛到 <b>104</b>，溯源位置恢复准确。
+          </li>
+          <li>
+            <strong>在内网受限环境下跑通平台化部署</strong>：Dify 1.17.1 全栈（<b>15 个容器</b>）通过
+            <code>host.docker.internal</code> 反向调用宿主机的本地模型服务，等价于生产环境的模型服务解耦；
+            RAGFlow v0.20.3（5 个容器）跑通 DeepDoc 深度解析，输出的不是纯文本而是结构化 HTML 表格
+            （表标题被单独识别为 caption），每个片段还附带版面截图标识。
+            期间解决了镜像层反复 EOF 中断、插件市场 403 需自行离线打包、离线包签名校验、
+            轻量化模式不加载内置向量模型等问题（关键坑：离线包 ZIP 内不能包含目录条目）。
+          </li>
+          <li>
+            <strong>建立 25 题评估集并做消融对比</strong>（20 道可答 + 5 道反幻觉拒答）：
+            纯向量检索 Hit@1 100% / 纯 BM25 94.7% / 混合检索 100%；
+            端到端关键词覆盖率 100%（25/25）、拒答正确率 100%（5/5）、<b>幻觉率 0.0%</b>、
+            平均延迟 4.39 秒。Dify 链路 7 题实测事实题 6/6、拒答 1/1、平均延迟 6.40 秒；
+            RAGFlow 5 份 PDF 全部解析成功、共 39 个片段。
+          </li>
+        </ul>
+
+        <div class="case-stats">
+          <div><b>0.0%</b><small>幻觉率</small></div>
+          <div><b>100%</b><small>混合检索 Hit@1</small></div>
+          <div><b>5/5</b><small>拒答正确率</small></div>
+          <div><b>4.39 秒</b><small>平均端到端延迟</small></div>
+          <div><b>25 题</b><small>评估集规模</small></div>
+          <div><b>3 条链路 · 20 容器</b><small>自研 / Dify / RAGFlow</small></div>
+        </div>
+
+        <!-- 工程判断 -->
+        <div class="case-philosophy">
+          <h3>工程判断</h3>
+          <ul>
+            <li>
+              <strong>先做一遍再谈选型</strong>：如果一开始就直接挑平台用，很可能把「向量模型选错」
+              误判成「平台不行」。自己做一遍，才知道每个环节的正常表现该是什么样。
+            </li>
+            <li>
+              <strong>报错信息经常指错方向</strong>：「输出为空但 token 拉满」看起来像接口协议问题，
+              实际是模型行为问题；「表格编号错位一位」看起来像分页 bug，实际是数据重复。
+              要顺着现象往下挖到机制层，而不是停在报错文字上。
+            </li>
+            <li>
+              <strong>能测的都要测</strong>：幻觉率 0% 不是靠模型能力堆出来的，而是靠两道防线 ——
+              检索侧用混合检索加重排确保资料真的相关，生成侧用系统提示硬性约束
+              「只依据参考资料、缺失必须拒答、数值必须带单位与公差、句末方括号标注出处」。
+              那 5 道文档里根本没有答案的题，才是这个项目里最重要的设计。
+            </li>
+            <li>
+              <strong>三选三，而不是三选一</strong>：自研 RAG、Dify 平台编排、RAGFlow DeepDoc
+              是按场景选型的能力储备，不是替代关系 —— <b>选型的本质是选代价</b>。
+            </li>
+          </ul>
+        </div>
+
+        <!-- 能力边界（如实标注） -->
+        <div class="case-philosophy">
+          <h3>能力边界（如实标注）</h3>
+          <ul>
+            <li>RAGFlow 的<b>检索问答链路本轮未配置</b>，这一轮聚焦验证的是 DeepDoc 文档解析能力。</li>
+            <li>5 类工艺文档是<b>按真实行业规范构造的仿真数据</b>，不是企业真实资料。</li>
+            <li>向量库是自研 numpy 实现、104 片段规模，<b>未做生产规模验证</b>；
+              生产环境需迁移到 FAISS / Milvus（索引接口已抽象，改动量小）。</li>
+            <li>所用社区镜像实际是 amd64 构建，在 M1 上通过指令集转译运行 ——
+              解析速度的瓶颈归因于转译层，而非解析引擎本身。</li>
+          </ul>
+        </div>
+
+        <!-- RAG 项目配图（没有截图，先留占位图，有图后替换同名文件） -->
+        <div class="case-gallery">
+          <figure>
+            <img src="images/projects/rag-1.svg" alt="RAG 系统架构" />
+            <figcaption>系统架构 / 自研链路示意</figcaption>
+          </figure>
+          <figure>
+            <img src="images/projects/rag-2.svg" alt="RAG 评估结果" />
+            <figcaption>25 题评估集与消融对比结果</figcaption>
+          </figure>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 设计理念总览 -->
+  <section class="section" id="philosophy">
+    <div class="container">
+      <h2 class="section-title">贯穿它们的设计理念</h2>
+      <p class="section-subtitle">一个设计理念的说服力，一半来自它拒绝做什么</p>
+
+      <p class="principle-quote">
+        「它追求的是<b>我愿意每天打开它</b>，<br />而不是帮我把事情清空。」
+      </p>
+
+      <div class="principles-grid">
+        <div class="principle-card">
+          <span class="principle-no">准则 01</span>
+          <h3>按心理契约分区</h3>
+          <p>「有承诺的事」需要成就感，「心血来潮记的事」需要零压力。两者混在一起会同时破坏两边，所以它们是永不合并的两个区域。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 02</span>
+          <h3>绝不使用负面信号</h3>
+          <p>不做逾期标红、红点与负面计数。逾期用琥珀色、断签不清零、习惯只归档不删除 —— 压力会杀死打开欲。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 03</span>
+          <h3>3 秒录入</h3>
+          <p>「从想到到记下」≤ 3 秒，这是唯一用秒数考核的指标。打开即聚焦、Enter 即存、保存静默成功。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 04</span>
+          <h3>审美是一等功能，但必须可验收</h3>
+          <p>字号只有 4 档、字重 2 档、颜色 token ≤10、动效 120–200ms；对比度 ≥4.5:1（8 组主题全过）、触控 ≥44px。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 05</span>
+          <h3>颜色不承载语义</h3>
+          <p>优先级只用 3/2/1 道竖条。主题色可由用户自选，因此文字色由代码动态派生，保证任何主题下都 ≥4.6:1。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 06</span>
+          <h3>昼夜不是换色，是换整套语言</h3>
+          <p>白天靠投影、夜里靠细线；不用纯黑也不用纯白。在「统一」的名义下抹平昼夜差异，等于丢掉两份设计的性格。</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-no">准则 07</span>
+          <h3>数据属于用户</h3>
+          <p>纯本地、零账号。导入是合并不是覆盖，平局按设备标识裁决，拒绝高版本 schema —— 同步做错比不同步更糟。</p>
+        </div>
+      </div>
+
+      <div class="veto">
+        <h3>我刻意不做的事</h3>
+        <ul>
+          <li>逾期标红 / 红色角标 / 任何负面计数 —— 典型「加了功能反而更差」</li>
+          <li>断签的惩罚或提示 —— 断签是正常的，提示只会制造失败感</li>
+          <li>保存时的 toast / 音效 / 模态确认框 —— 打断录入流</li>
+          <li>强制选择分类 / 日期 / 优先级 —— 增加录入摩擦</li>
+          <li>账号、登录、云同步 —— 数据主权 &gt; 便利</li>
+          <li>社交、点赞、排行榜 —— 情绪不是拿来比较的</li>
+          <li>AI 代写日记 —— 日记一旦是生成的，它就失去了全部意义</li>
+          <li>首页弹窗 / 引导页 / 新手教程 —— 增加摩擦</li>
+          <li>广告与付费墙</li>
+          <li>「清空收件箱」—— 它追求积累，不追求清空</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能小结 -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">技术关键词</h2>
+      <p class="section-subtitle">这些项目用到的能力</p>
+      <div class="case-tags" style="justify-content: center; max-width: 900px; margin: 0 auto;">
+        <span>Swift / SwiftUI / AppKit</span>
+        <span>Combine</span>
+        <span>ArkTS</span>
+        <span>Java</span>
+        <span>原生 JavaScript</span>
+        <span>HTML / CSS</span>
+        <span>WKWebView / WebView 混合架构</span>
+        <span>原生桥 · @JavascriptInterface / WKScriptMessageHandler</span>
+        <span>AlarmManager 定时提醒</span>
+        <span>RemoteInput 通知栏直接回复</span>
+        <span>WindowInsets 沉浸式边到边</span>
+        <span>OnBackInvokedCallback</span>
+        <span>裸 swiftc / xcodebuild</span>
+        <span>codesign / ad-hoc 签名</span>
+        <span>aapt2 / d8 / zipalign / apksigner</span>
+        <span>hvigor / DevEco</span>
+        <span>Chrome DevTools Protocol</span>
+        <span>XCTest</span>
+        <span>WCAG 对比度审计</span>
+        <span>JSON 原子写入 · tmp + fsync + rename</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 华天心 · 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="返回顶部">↑</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

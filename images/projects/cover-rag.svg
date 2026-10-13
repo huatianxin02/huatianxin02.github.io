@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f5f5f7"/>
+  <rect x="28" y="28" width="1144" height="704" rx="26" fill="none" stroke="#c7c7cc" stroke-width="3" stroke-dasharray="16 12"/>
+  <circle cx="600" cy="330" r="46" fill="none" stroke="#86868b" stroke-width="3"/>
+  <path d="M578 330 l16 16 l30 -34" fill="none" stroke="#86868b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="440" text-anchor="middle" font-family="-apple-system, PingFang SC, sans-serif" font-size="44" fill="#1d1d1f">RAG 智能问答助手</text>
+  <text x="600" y="492" text-anchor="middle" font-family="-apple-system, PingFang SC, sans-serif" font-size="26" fill="#86868b">图片占位 · 稍后替换</text>
+</svg>

@@ -30,8 +30,9 @@ function applyTheme(theme) {
   const isDark = theme === "dark";
   document.body.classList.toggle("dark", isDark);
   if (themeToggle) {
-    // 深色模式时显示☀️（点了能回到浅色），浅色模式时显示🌙
-    themeToggle.textContent = isDark ? "☀️" : "🌙";
+    // 日间显示「夜」（点了入夜），夜间显示「昼」（点了回到白天）
+    themeToggle.textContent = isDark ? "昼" : "夜";
+    themeToggle.setAttribute("aria-label", isDark ? "切换到白天" : "切换到夜里");
   }
   // 记住选择，下次打开网站还是这个模式
   localStorage.setItem("theme", theme);
@@ -83,6 +84,16 @@ if (backToTop) {
     ".resume-card",
     ".page-hero h1",
     ".page-hero p",
+    ".case-head",
+    ".case-tags",
+    ".case-lead",
+    ".case-points li",
+    ".case-stats div",
+    ".case-gallery figure",
+    ".case-philosophy",
+    ".principle-quote",
+    ".principle-card",
+    ".veto",
   ];
 
   const targets = document.querySelectorAll(selectors.join(","));

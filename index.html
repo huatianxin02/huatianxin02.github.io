@@ -20,14 +20,14 @@
         <a href="index.html">首页</a>
         <a href="index.html#about">关于我</a>
         <a href="index.html#skills">技能</a>
-        <a href="index.html#projects">作品</a>
+        <a href="projects.html">作品</a>
         <a href="blog.html">文章</a>
         <a href="gallery.html">相册</a>
         <a href="index.html#contact">联系我</a>
       </nav>
       <!-- 右侧：深色模式 + 手机菜单按钮 -->
       <div class="nav-right">
-        <button class="theme-toggle" aria-label="切换深色模式">🌙</button>
+        <button class="theme-toggle" aria-label="切换深色模式">夜</button>
         <button class="nav-toggle" aria-label="打开菜单">☰</button>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="container">
       <!-- ↓↓↓ 这里改你的头像（可选）：把图片放入 images 文件夹后改下面的文件名 ↓↓↓ -->
       <div class="avatar">
-        <img src="images/avatar.png" alt="头像" />
+        <img src="images/avatar.svg" alt="头像" />
       </div>
 
       <!-- ↓↓↓ 这里改标题上方的小标签（不需要可以删掉这一行） ↓↓↓ -->
@@ -46,7 +46,7 @@
 
       <!-- ↓↓↓ 这里改你的名字和一句自我介绍 ↓↓↓ -->
       <h1 class="hero-title">你好，我是 华天心</h1>
-      <p class="hero-subtitle">无业</p>
+      <p class="hero-subtitle">AI 研究员</p>
 
       <!-- ↓↓↓ 这里改一句简短的个性化介绍 ↓↓↓ -->
       <p class="hero-desc">
@@ -56,8 +56,8 @@
       <!-- 按钮区，可自由增删 -->
       <div class="hero-buttons">
         <!-- 下载/查看简历 -->
-        <a href="resume.html" class="btn btn-primary">📄 下载 / 查看简历</a>
-        <a href="#projects" class="btn btn-outline">查看我的作品</a>
+        <a href="resume.html" class="btn btn-primary">简历</a>
+        <a href="projects.html" class="btn btn-outline">查看我的作品</a>
       </div>
     </div>
   </section>
@@ -71,21 +71,26 @@
       <!-- ↓↓↓ 这里写你的个人介绍，可以多写几句 ↓↓↓ -->
       <div class="about-content">
         <p>
-          你好，我是华天心。目前在寻找新机会，也喜欢研究设计、编程和摄影。
-          这里展示了我的一些作品，也记录了我的成长。
+          你好，我是华天心，AI 研究员。独立完成过 4 款跨端客户端应用（macOS 原生 / Android / iOS / HarmonyOS / Web），
+          以及一套基于 RAG 的本地化文档问答系统 —— 全部是纯本地、零第三方依赖的自研产品。
         </p>
         <p>
-          我的目标是用自己的技能做出对别人有帮助的东西。
-          欢迎通过下方的联系方式与我交流。
+          我喜欢把「好不好看、快不快、稳不稳」变成可测量的指标：对比度、触控命中区、横向溢出、
+          自动化断言数量 —— 用数字而不是感觉来判断自己做得好不好。目前正在寻找新的机会。
+        </p>
+        <p>
+          这几款工具追求的是「<strong>我愿意每天打开它</strong>」，而不是「帮我把事情清空」——
+          所以它们都没有账号、没有云同步，也从不做逾期标红与断签惩罚。
         </p>
       </div>
 
       <!-- ↓↓↓ 这里写你的基本信息，可自由增删 ↓↓↓ -->
       <ul class="info-list">
-        <li><strong>身份：</strong> 无业</li>
-        <li><strong>状态：</strong> 寻找机会中</li>
+        <li><strong>身份：</strong> AI 研究员</li>
+        <li><strong>状态：</strong> 求职中</li>
+        <li><strong>方向：</strong> AI 研究 / 客户端开发</li>
+        <li><strong>教育：</strong> 贵州中医药大学 · 中西医临床医学</li>
         <li><strong>邮箱：</strong> 2870432094@qq.com</li>
-        <li><strong>网站：</strong> huatianxin02.github.io</li>
       </ul>
     </div>
   </section>
@@ -99,20 +104,40 @@
       <!-- ↓↓↓ 技能卡片，想加就复制一段 <div class="skill-card">...</div>，想删就删掉 ↓↓↓ -->
       <div class="skills-grid">
         <div class="skill-card">
-          <h3>网页设计</h3>
-          <p>使用 HTML/CSS 制作美观的网页界面。</p>
+          <h3>原生客户端开发</h3>
+          <p>Swift / SwiftUI / AppKit 开发 macOS 原生应用，裸 swiftc 与 xcodebuild 双构建链路，零第三方依赖。</p>
         </div>
         <div class="skill-card">
-          <h3>前端开发</h3>
-          <p>熟悉 HTML、CSS、JavaScript，能够独立完成网页。</p>
+          <h3>跨端混合架构</h3>
+          <p>「一份 Web 界面 + N 个原生外壳」，用统一桥协议覆盖 macOS / Android / HarmonyOS / iOS / Web。</p>
         </div>
         <div class="skill-card">
-          <h3>摄影</h3>
-          <p>喜欢记录生活中的美好瞬间。</p>
+          <h3>移动端系统能力</h3>
+          <p>定时提醒、通知栏直接回复、沉浸式边到边、预测式返回，以及运行时权限最小化设计。</p>
         </div>
         <div class="skill-card">
-          <h3>内容创作</h3>
-          <p>写文章、做视频，把想法分享给更多人。</p>
+          <h3>自动化验证</h3>
+          <p>Chrome DevTools Protocol 三层端到端验证、XCTest、自检协议，累计 700+ 项自动化断言。</p>
+        </div>
+        <div class="skill-card">
+          <h3>构建与工具链</h3>
+          <p>免 Gradle 手工打通 aapt2 → d8 → zipalign → apksigner，ad-hoc 签名与脚本化发布。</p>
+        </div>
+        <div class="skill-card">
+          <h3>可测量质量</h3>
+          <p>用 WCAG 对比度、触控命中区、最小字号、横向溢出等指标守住界面质量。</p>
+        </div>
+        <div class="skill-card">
+          <h3>RAG / 大模型应用</h3>
+          <p>从零实现 RAG 全链路：混合检索（向量 + BM25）、RRF 融合、重排与防幻觉提示词约束。</p>
+        </div>
+        <div class="skill-card">
+          <h3>向量检索与选型</h3>
+          <p>向量模型选型与语义空间坍缩诊断，用 25 题评估集做消融对比，把效果变成可验证的数字。</p>
+        </div>
+        <div class="skill-card">
+          <h3>容器化与内网部署</h3>
+          <p>Docker Compose 编排 Dify / RAGFlow 二十个容器，处理镜像、插件离线打包与签名校验。</p>
         </div>
       </div>
     </div>
@@ -121,37 +146,59 @@
   <!-- ===================== 作品 / 项目 ===================== -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title">我的作品</h2>
-      <p class="section-subtitle">这里放一些项目或作品</p>
+      <h2 class="section-title">我开发的软件</h2>
+      <p class="section-subtitle">四款跨端客户端应用 + 一套本地化 RAG 问答系统 · 独立完成</p>
 
-      <!-- ↓↓↓ 作品卡片，想加就复制一段 <div class="project-card">...</div>，想删就删掉 ↓↓↓ -->
+      <!-- ↓↓↓ 作品卡片：封面图在 images/projects/ 里，想换成自己的截图就替换同名文件 ↓↓↓ -->
       <div class="projects-grid">
         <article class="project-card">
-          <img src="images/project1.svg" alt="项目一封面" />
+          <img src="images/projects/cover-nianqi.jpg" alt="念起 nianqi 封面" />
           <div class="project-body">
-            <h3>项目名称一</h3>
-            <p>这里写这个作品的简要介绍，比如它是什么、解决了什么问题。</p>
-            <a href="#" class="project-link">查看详情 →</a>
+            <h3>念起 nianqi</h3>
+            <p>跨端个人记录应用：macOS 原生 / Android / Web 三端共用同一份数据契约。4741 行 Swift 原生实现，零第三方依赖、零运行时权限。</p>
+            <a href="projects.html#nianqi" class="project-link">查看详情 →</a>
           </div>
         </article>
 
         <article class="project-card">
-          <img src="images/project2.svg" alt="项目二封面" />
+          <img src="images/projects/cover-mood.jpg" alt="心情笔记 MoodNotes 封面" />
           <div class="project-body">
-            <h3>项目名称二</h3>
-            <p>这里写第二个作品的介绍。</p>
-            <a href="#" class="project-link">查看详情 →</a>
+            <h3>心情笔记 MoodNotes</h3>
+            <p>五端本地情绪日记：「一份网页 + 5 个原生外壳」，覆盖 macOS / Android / HarmonyOS / iOS / Web，529 项自动化测试全绿。</p>
+            <a href="projects.html#mood" class="project-link">查看详情 →</a>
           </div>
         </article>
 
         <article class="project-card">
-          <img src="images/project3.svg" alt="项目三封面" />
+          <img src="images/projects/cover-yohaku.jpg" alt="余白 墨間 封面" />
           <div class="project-body">
-            <h3>项目名称三</h3>
-            <p>这里写第三个作品的介绍。</p>
-            <a href="#" class="project-link">查看详情 →</a>
+            <h3>余白 Yohaku · 墨間 Sumi</h3>
+            <p>macOS 待办双形态（暖纸日间 / 夜色墨线）并合并为 Android 版。自研重复规则引擎，昼夜切换即整套视觉语言切换。</p>
+            <a href="projects.html#yohaku" class="project-link">查看详情 →</a>
           </div>
         </article>
+
+        <article class="project-card">
+          <img src="images/projects/cover-zhouye.jpg" alt="昼夜 Zhouye 封面" />
+          <div class="project-body">
+            <h3>昼夜 Zhouye</h3>
+            <p>轻量 Android 待办应用：Java + WebView，免 Gradle 手工打包链，22 项 CDP 断言全部通过。</p>
+            <a href="projects.html#zhouye" class="project-link">查看详情 →</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/projects/cover-rag.svg" alt="RAG 智能问答助手封面" />
+          <div class="project-body">
+            <h3>汽车工艺文档智能问答助手</h3>
+            <p>基于 RAG 的本地化文档问答系统：自研全链路 + Dify 编排 + RAGFlow DeepDoc 三条路线，幻觉率 0%、检索命中率 100%。</p>
+            <a href="projects.html#rag" class="project-link">查看详情 →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-buttons" style="margin-top: 44px;">
+        <a href="projects.html" class="btn btn-primary">查看全部作品详情</a>
       </div>
     </div>
   </section>
@@ -164,9 +211,9 @@
 
       <!-- ↓↓↓ 这里改你的联系方式，可以添加更多 ↓↓↓ -->
       <div class="contact-links">
-        <a href="mailto:2870432094@qq.com" class="contact-item">📧 邮箱：2870432094@qq.com</a>
-        <a href="https://github.com/huatianxin02" class="contact-item">🔗 GitHub：huatianxin02</a>
-        <a href="resume.html" class="contact-item">📄 简历</a>
+        <a href="mailto:2870432094@qq.com" class="contact-item">邮箱 2870432094@qq.com</a>
+        <a href="https://github.com/huatianxin02" class="contact-item">GitHub huatianxin02</a>
+        <a href="resume.html" class="contact-item">简历</a>
       </div>
     </div>
   </section>

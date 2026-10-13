@@ -17,13 +17,13 @@
         <a href="index.html">首页</a>
         <a href="index.html#about">关于我</a>
         <a href="index.html#skills">技能</a>
-        <a href="index.html#projects">作品</a>
+        <a href="projects.html">作品</a>
         <a href="blog.html">文章</a>
         <a href="gallery.html">相册</a>
         <a href="index.html#contact">联系我</a>
       </nav>
       <div class="nav-right">
-        <button class="theme-toggle" aria-label="切换深色模式">🌙</button>
+        <button class="theme-toggle" aria-label="切换深色模式">夜</button>
         <button class="nav-toggle" aria-label="打开菜单">☰</button>
       </div>
     </div>
@@ -32,7 +32,7 @@
   <!-- 页面标题 -->
   <section class="page-hero">
     <div class="container">
-      <h1>📝 我的文章</h1>
+      <h1>文章</h1>
       <p>记录想法与成长</p>
     </div>
   </section>
@@ -42,24 +42,30 @@
     <div class="container">
       <div class="post-list">
 
-        <!-- ↓↓↓ 一篇文章：想加就复制一段 <article class="post-card">...</article>，想删就删掉 ↓↓↓ -->
+        <!-- 已发布的文章 -->
+        <article class="post-card featured">
+          <span class="post-badge">技术复盘</span>
+          <h3>我在一台 Mac 上跑通了三套 RAG 系统</h3>
+          <span class="post-date">2026 年 10 月 14 日 · 汽车电子 / RAG / 大模型应用</span>
+          <p>
+            为了搞清楚「让机器读懂工艺文档」到底该怎么做，我用三条完全不同的技术路线各实现了一遍：
+            从零手写 RAG 全链路、用 Dify 做平台化编排、用 RAGFlow 的 DeepDoc 做深度解析。
+            最终幻觉率 0%、检索命中率 100%，也摸清了三种方案各自的代价。
+          </p>
+          <a href="blog-rag.html">阅读全文 →</a>
+        </article>
+
+        <!-- ↓↓↓ 占位文章：想加就复制一段 <article class="post-card">...</article>，想删就删掉 ↓↓↓ -->
         <article class="post-card">
           <h3>我的第一篇文章</h3>
-          <span class="post-date">📅 2024 年 1 月 1 日</span>
+          <span class="post-date">2024 年 1 月 1 日</span>
           <p>这里是文章摘要，简单介绍这篇文章写了什么内容。</p>
           <a href="#">阅读全文 →</a>
         </article>
 
         <article class="post-card">
           <h3>第二篇文章的标题</h3>
-          <span class="post-date">📅 2024 年 2 月 1 日</span>
-          <p>这里是文章摘要……</p>
-          <a href="#">阅读全文 →</a>
-        </article>
-
-        <article class="post-card">
-          <h3>第三篇文章的标题</h3>
-          <span class="post-date">📅 2024 年 3 月 1 日</span>
+          <span class="post-date">2024 年 2 月 1 日</span>
           <p>这里是文章摘要……</p>
           <a href="#">阅读全文 →</a>
         </article>

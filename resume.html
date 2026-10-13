@@ -17,13 +17,13 @@
         <a href="index.html">首页</a>
         <a href="index.html#about">关于我</a>
         <a href="index.html#skills">技能</a>
-        <a href="index.html#projects">作品</a>
+        <a href="projects.html">作品</a>
         <a href="blog.html">文章</a>
         <a href="gallery.html">相册</a>
         <a href="index.html#contact">联系我</a>
       </nav>
       <div class="nav-right">
-        <button class="theme-toggle" aria-label="切换深色模式">🌙</button>
+        <button class="theme-toggle" aria-label="切换深色模式">夜</button>
         <button class="nav-toggle" aria-label="打开菜单">☰</button>
       </div>
     </div>
@@ -32,10 +32,10 @@
   <!-- 页面标题 + 打印按钮 -->
   <section class="page-hero no-print">
     <div class="container">
-      <h1>📄 我的简历</h1>
+      <h1>简历</h1>
       <p>点击下方按钮可打印或另存为 PDF</p>
       <div class="resume-actions" style="margin-top: 22px;">
-        <button id="printBtn" class="btn btn-primary">🖨 打印 / 保存为 PDF</button>
+        <button id="printBtn" class="btn btn-primary">打印 / 保存为 PDF</button>
       </div>
     </div>
   </section>
@@ -48,14 +48,17 @@
         <!-- 头部：名字 + 基本信息，改这里 -->
         <div class="resume-head">
           <h1>华天心</h1>
-          <p>无业 · 邮箱：2870432094@qq.com · 网站：huatianxin02.github.io</p>
+          <p>AI 研究员 · 求职中 · 邮箱：2870432094@qq.com · 网站：huatianxin02.github.io</p>
         </div>
 
         <!-- 个人简介，可修改 -->
         <div class="resume-section">
           <h2>个人简介</h2>
           <ul>
-            <li>这里写一段简短的自我介绍，例如性格、特长、求职意向等。</li>
+            <li>独立完成 4 款跨端客户端应用（macOS 原生 · Android · iOS · HarmonyOS · Web），全部为纯本地、零第三方依赖、零运行时权限的自研产品。</li>
+            <li>独立完成一套基于 RAG 的本地化文档问答系统：从零自研全链路 + Dify 平台化编排 + RAGFlow DeepDoc 深度解析三条路线，25 题评估集上混合检索 Hit@1 100%、幻觉率 0.0%，全链路本地私有化、无境外 API 依赖。</li>
+            <li>技术栈横跨 Swift / SwiftUI / AppKit / WKWebView / ArkTS / Java / WebView 与 Python / RAG / Docker，并在无 Gradle、无 Xcode 工程的受限环境下手工打通 swiftc 与 aapt2 → javac → d8 → zipalign → apksigner 两条构建链路。</li>
+            <li>工程习惯上重视可验证性：自建自检协议、三层 CDP 端到端验证与量化评估集（累计 700+ 项自动化断言），并用对比度、触控命中区、横向溢出、幻觉率等可测量指标替代主观判断。</li>
           </ul>
         </div>
 
@@ -63,8 +66,16 @@
         <div class="resume-section">
           <h2>技能</h2>
           <ul>
-            <li>网页设计 / 前端开发：HTML、CSS、JavaScript</li>
-            <li>其他技能可以继续添加</li>
+            <li><strong>语言 / 框架：</strong>Swift · SwiftUI · AppKit · Combine · ArkTS · Java · JavaScript（原生）· HTML / CSS</li>
+            <li><strong>客户端方向：</strong>WKWebView / WebView 混合架构 · 原生桥（@JavascriptInterface / WKScriptMessageHandler）· 声明式 UI · 菜单栏应用 · 分享目标与快捷方式集成</li>
+            <li><strong>移动端系统能力：</strong>AlarmManager 定时提醒 · RemoteInput 通知栏直接回复 · WindowInsets 沉浸式边到边 · OnBackInvokedCallback 预测式返回 · 运行时权限最小化</li>
+            <li><strong>构建与工具链：</strong>裸 swiftc · xcodebuild · codesign / ad-hoc 签名 · aapt2 / d8 / zipalign / apksigner（免 Gradle）· hvigor / DevEco · adb 无线调试</li>
+            <li><strong>质量保障：</strong>Chrome DevTools Protocol 端到端验证 · XCTest · 自检协议设计 · WCAG 对比度审计 · 触控命中区与可读性量化 · 崩溃日志根因分析</li>
+            <li><strong>数据层：</strong>JSON 原子写入（tmp + fsync + rename）· 软删除墓碑 · LWW 合并 · 损坏自愈与备份轮转</li>
+            <li><strong>RAG / 大模型应用：</strong>RAG 检索增强生成 · 混合检索（向量 + BM25）· RRF 倒数排名融合 · 重排 · 提示词工程与防幻觉约束 · 向量模型选型与语义空间坍缩诊断</li>
+            <li><strong>平台与容器：</strong>Dify · RAGFlow DeepDoc（版面分析 / OCR / 表格结构识别）· Docker / Docker Compose · 镜像构建与离线分发 · 内网受限环境部署排障</li>
+            <li><strong>模型服务：</strong>LM Studio 本地推理（OpenAI 兼容接口）· Qwen3.5-9B（对话）· Qwen3-Embedding-4B（向量，2560 维）</li>
+            <li><strong>评估体系：</strong>量化评估集设计 · 消融实验 · Hit@1 / Recall@3 / MRR · 幻觉率与拒答正确率度量</li>
           </ul>
         </div>
 
@@ -72,16 +83,58 @@
         <div class="resume-section">
           <h2>教育经历</h2>
           <ul>
-            <li>学校名称 · 专业 · 起止时间（待填写）</li>
+            <li>贵州中医药大学 · 中西医临床医学</li>
           </ul>
         </div>
 
-        <!-- 工作 / 项目经历，可修改 -->
+        <!-- 项目经历 -->
         <div class="resume-section">
-          <h2>经历</h2>
+          <h2>项目经历</h2>
           <ul>
-            <li>这里写工作经历或做过的事情（待填写）</li>
+            <li>
+              <strong>念起 nianqi</strong>（macOS 原生 / Android / Web）——
+              独立设计并实现跨端个人记录应用，统一数据契约使三端可互相导入导出；
+              macOS 端 20 个 Swift 文件 4741 行，裸 swiftc 构建、零第三方依赖，产物 2.5 MB；
+              在 Google Maven 超时不可用的环境下绕过 Gradle/AGP，手工打通 aapt2 → apksigner 流水线，
+              产出 50468 字节、零运行时权限的 Android 16 应用，并以三层 CDP 验证（78 项断言）在模拟器上 19/19 通过。
+            </li>
+            <li>
+              <strong>心情笔记 MoodNotes</strong>（macOS / Android / HarmonyOS / iOS / Web）——
+              设计「一份共享 Web 界面 + 5 个平台原生外壳」架构，用同一套桥协议把本地情绪日记铺到 5 个平台，网页代码移植时零改动；
+              建立 9 套共 529 项自动化测试并全部通过；
+              用崩溃日志定位 Android 端「一打开就闪退」根因（RemoteInput 的 PendingIntent 在 API 31+ 必须 FLAG_MUTABLE），
+              按系统版本分流修复并给全部通知调用加兜底；Android 包不含 INTERNET 权限，全程纯离线。
+            </li>
+            <li>
+              <strong>余白 Yohaku · 墨間 Sumi</strong>（macOS 双形态 + Android）——
+              用 SwiftUI 独立开发两款 macOS 待办应用（Xcode 工程 + XCTest），
+              实现按天/周/月间隔的重复规则引擎（含「每月 31 号在 2 月落到月末」的短月夹取）与连续天数统计；
+              把两款应用合并为一款 Android 应用，昼夜切换时切换整套视觉语言；
+              用代码按当前主题色动态派生对比度 token，保证正文都 ≥4.6:1，并以 96 项 CDP 断言守住溢出、字号与触控命中区。
+            </li>
+            <li>
+              <strong>昼夜 Zhouye</strong>（Android）——
+              用 Java 296 行 + 915 行 Web 层实现 Android 待办应用，minSdk 26 / targetSdk 36、零运行时权限；
+              定位并修复 macOS bash 3.2 下 set -u 把空数组视为未定义导致正式构建失败的问题，恢复正式出包能力；
+              用 Node + CDP 驱动真实 Chrome 做 22 项断言，22/22 通过。
+            </li>
+            <li>
+              <strong>汽车工艺文档智能问答助手</strong>（RAG · Python / Dify / RAGFlow）——
+              针对制造业工艺文档表格密集、术语专业、答案必须可核验的痛点，独立实现三套 RAG 系统：
+              ① 从零自研全链路 11 个模块、零外部服务依赖（领域词典分词 + hybrid 分块 + 向量与 BM25 双路召回
+              RRF 融合 + 防幻觉提示词），溯源做到「章节 → 页码 → 片段类型」三级；
+              ② 部署 Dify 1.17.1 全栈（15 容器），通过 host.docker.internal 反向调用宿主机本地模型，实现模型服务与编排解耦；
+              ③ 部署 RAGFlow v0.20.3（5 容器）跑通 DeepDoc 深度解析，还原结构化 HTML 表格与版面位置。
+              定位并解决中文语义空间坍缩（Top1 命中 60% → 100%）、思考模式占满输出配额导致答案为空
+              （单题 27–175 秒 → 3.8–9.1 秒）、PDF 表格文字污染正文导致溯源错位（索引片段 128 → 104）等问题。
+              建立 25 题评估集（20 可答 + 5 反幻觉拒答）做消融对比：混合检索 Hit@1 100%、
+              拒绝正确率 100%（5/5）、<strong>幻觉率 0.0%</strong>、平均端到端延迟 4.39 秒。
+            </li>
           </ul>
+          <p style="margin-top: 14px; color: var(--text-muted); font-size: 0.92rem;">
+            带截图的详细介绍见 <a href="projects.html" style="color: var(--primary);">作品页</a>；
+            RAG 项目完整复盘见 <a href="blog-rag.html" style="color: var(--primary);">这篇文章</a>。
+          </p>
         </div>
 
       </div>

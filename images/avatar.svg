@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="18 18 72 72">
+  <!-- 昼夜 / 余白 · 墨間 的启动图标：一个半明半暗的圆
+       左半填墨（墨間），右半只留一圈细描边（余白） -->
+  <rect x="18" y="18" width="72" height="72" fill="#F1EBE0"/>
+  <circle cx="54" cy="54" r="25" fill="none" stroke="#1B1B21" stroke-width="3"/>
+  <path d="M 54,29 A 25,25 0 0 0 54,79 Z" fill="#1B1B21"/>
+</svg>
