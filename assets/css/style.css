@@ -1685,3 +1685,90 @@ article[id] {
   opacity: 1;
   font-weight: 500;
 }
+
+/* ---------- 浅色主题的局部画景：只占右侧 30%，不覆盖正文 ----------
+   三张图每 8 秒轮换，完整周期 24 秒；夜间和减弱动态效果另作处理。
+   背景图只在顶部区域出现，不铺满全站，保持原有的昼夜留白。 */
+.scenic-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.scenic-hero > :not(.scenery) {
+  position: relative;
+  z-index: 1;
+}
+
+.scenery {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(30%, 420px);
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 32%);
+  mask-image: linear-gradient(90deg, transparent, #000 32%);
+}
+
+.scenery__layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: scenery-cycle 24s linear infinite;
+}
+
+.scenery__layer--sakura {
+  background-image: url("../../images/backgrounds/sakura.jpg");
+  background-position: right 15%;
+  animation-delay: 0s;
+}
+
+.scenery__layer--bamboo {
+  background-image: url("../../images/backgrounds/bamboo.jpg");
+  background-position: right 45%;
+  animation-delay: -16s;
+}
+
+.scenery__layer--landscape {
+  background-image: url("../../images/backgrounds/landscape.jpg");
+  background-position: right 34%;
+  animation-delay: -8s;
+}
+
+@keyframes scenery-cycle {
+  0%, 25% { opacity: 1; }
+  33.333%, 91.667% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 长文页只点缀开头，不把画铺到整个阅读区。 */
+.article-page .scenery {
+  height: min(440px, 75vh);
+}
+
+/* 夜间不出现浅色图块，完整保留墨間的蓝调炭黑背景。 */
+body.dark .scenery {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scenery__layer {
+    animation: none;
+    opacity: 0;
+  }
+
+  .scenery__layer--sakura {
+    opacity: 1;
+  }
+}
+
+@media print {
+  .scenery {
+    display: none !important;
+  }
+}
