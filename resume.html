@@ -29,6 +29,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">跳到正文</a>
+
   <!-- 导航栏（和首页一致） -->
   <header class="navbar">
     <div class="container nav-inner">
@@ -40,18 +42,18 @@
         <a href="projects.html">作品</a>
         <a href="blog.html">文章</a>
         <a href="gallery.html">相册</a>
-        <a href="resume.html">简历</a>
+        <a href="resume.html" aria-current="page">简历</a>
         <a href="index.html#contact">联系我</a>
       </nav>
       <div class="nav-right">
         <button class="theme-toggle" aria-label="切换深色模式">夜</button>
-        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+        <button class="nav-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
   <!-- 页面标题 + 打印按钮 -->
-  <section class="page-hero no-print">
+  <section class="page-hero no-print" id="main">
     <div class="container">
       <h1>简历</h1>
       <p>点击下方按钮可打印或另存为 PDF</p>
@@ -68,7 +70,7 @@
 
         <!-- 头部：名字 + 基本信息，改这里 -->
         <div class="resume-head">
-          <h1>华天心</h1>
+          <h2>华天心</h2>
           <p>AI 研究员 · 求职中 · 邮箱：2870432094@qq.com · 网站：huatianxin02.github.io</p>
         </div>
 

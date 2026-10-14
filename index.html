@@ -31,13 +31,15 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">跳到正文</a>
+
   <!-- ===================== 顶部导航栏 ===================== -->
   <header class="navbar">
     <div class="container nav-inner">
       <!-- ↓↓↓ 这里改左上角的网站名字/你的名字 ↓↓↓ -->
       <a class="logo" href="index.html">华天心</a>
       <nav class="nav-links">
-        <a href="index.html">首页</a>
+        <a href="index.html" aria-current="page">首页</a>
         <a href="index.html#about">关于我</a>
         <a href="index.html#skills">技能</a>
         <a href="projects.html">作品</a>
@@ -49,13 +51,13 @@
       <!-- 右侧：深色模式 + 手机菜单按钮 -->
       <div class="nav-right">
         <button class="theme-toggle" aria-label="切换深色模式">夜</button>
-        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+        <button class="nav-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
   <!-- ===================== 首页 / 欢迎区 ===================== -->
-  <section id="home" class="hero">
+  <section id="main" class="hero">
     <div class="container">
       <!-- ↓↓↓ 这里改你的头像（可选）：把图片放入 images 文件夹后改下面的文件名 ↓↓↓ -->
       <div class="avatar">
@@ -173,7 +175,7 @@
       <!-- ↓↓↓ 作品卡片：封面图在 images/projects/ 里，想换成自己的截图就替换同名文件 ↓↓↓ -->
       <div class="projects-grid">
         <article class="project-card">
-          <img src="images/projects/cover-nianqi.jpg" alt="念起 nianqi 封面" />
+          <img src="images/projects/cover-nianqi.jpg" alt="念起 nianqi 封面" loading="lazy" decoding="async" />
           <div class="project-body">
             <h3>念起 nianqi</h3>
             <p>跨端个人记录应用：macOS 原生 / Android / Web 三端共用同一份数据契约。4741 行 Swift 原生实现，零第三方依赖、零运行时权限。</p>
@@ -182,7 +184,7 @@
         </article>
 
         <article class="project-card">
-          <img src="images/projects/cover-mood.jpg" alt="心情笔记 MoodNotes 封面" />
+          <img src="images/projects/cover-mood.jpg" alt="心情笔记 MoodNotes 封面" loading="lazy" decoding="async" />
           <div class="project-body">
             <h3>心情笔记 MoodNotes</h3>
             <p>五端本地情绪日记：「一份网页 + 5 个原生外壳」，覆盖 macOS / Android / HarmonyOS / iOS / Web，529 项自动化测试全绿。</p>
@@ -191,7 +193,7 @@
         </article>
 
         <article class="project-card">
-          <img src="images/projects/cover-yohaku.jpg" alt="余白 墨間 封面" />
+          <img src="images/projects/cover-yohaku.jpg" alt="余白 墨間 封面" loading="lazy" decoding="async" />
           <div class="project-body">
             <h3>余白 Yohaku · 墨間 Sumi</h3>
             <p>macOS 待办双形态（暖纸日间 / 夜色墨线）并合并为 Android 版。自研重复规则引擎，昼夜切换即整套视觉语言切换。</p>
@@ -200,7 +202,7 @@
         </article>
 
         <article class="project-card">
-          <img src="images/projects/cover-zhouye.jpg" alt="昼夜 Zhouye 封面" />
+          <img src="images/projects/cover-zhouye.jpg" alt="昼夜 Zhouye 封面" loading="lazy" decoding="async" />
           <div class="project-body">
             <h3>昼夜 Zhouye</h3>
             <p>轻量 Android 待办应用：Java + WebView，免 Gradle 手工打包链，22 项 CDP 断言全部通过。</p>
@@ -209,7 +211,7 @@
         </article>
 
         <article class="project-card">
-          <img src="images/projects/cover-rag.svg" alt="RAG 智能问答助手封面" />
+          <img src="images/projects/cover-rag.svg" alt="RAG 智能问答助手封面" loading="lazy" decoding="async" />
           <div class="project-body">
             <h3>汽车工艺文档智能问答助手</h3>
             <p>基于 RAG 的本地化文档问答系统：自研全链路 + Dify 编排 + RAGFlow DeepDoc 三条路线，幻觉率 0%、检索命中率 100%。</p>

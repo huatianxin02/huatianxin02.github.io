@@ -29,6 +29,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">跳到正文</a>
+
   <header class="navbar">
     <div class="container nav-inner">
       <a class="logo" href="index.html">华天心</a>
@@ -36,7 +38,7 @@
         <a href="index.html">首页</a>
         <a href="index.html#about">关于我</a>
         <a href="index.html#skills">技能</a>
-        <a href="projects.html">作品</a>
+        <a href="projects.html" aria-current="page">作品</a>
         <a href="blog.html">文章</a>
         <a href="gallery.html">相册</a>
         <a href="resume.html">简历</a>
@@ -44,12 +46,12 @@
       </nav>
       <div class="nav-right">
         <button class="theme-toggle" aria-label="切换深色模式">夜</button>
-        <button class="nav-toggle" aria-label="打开菜单">☰</button>
+        <button class="nav-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero" id="main">
     <div class="container">
       <h1>我开发的软件</h1>
       <p>四款跨端客户端应用 + 一套本地化 RAG 问答系统 · 独立完成</p>
@@ -162,15 +164,15 @@
         <!-- 念起 项目配图：把图片放进 images/projects/ 后替换下面的文件名即可 -->
         <div class="case-gallery">
           <figure>
-            <img src="images/projects/nianqi-1.svg" alt="念起 macOS 主界面" />
+            <img src="images/projects/nianqi-1.svg" alt="念起 macOS 主界面" loading="lazy" decoding="async" />
             <figcaption>macOS 原生主界面（SwiftUI）</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/nianqi-2.jpg" alt="念起 Android 版" />
+            <img src="images/projects/nianqi-2.jpg" alt="念起 Android 版" loading="lazy" decoding="async" />
             <figcaption>Android 版（WebView + 原生桥）</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/nianqi-3.jpg" alt="念起 Web 版" />
+            <img src="images/projects/cover-nianqi.jpg" alt="念起 Web 版" loading="lazy" decoding="async" />
             <figcaption>Web 版（纯静态）</figcaption>
           </figure>
         </div>
@@ -279,15 +281,15 @@
         <!-- 心情笔记 项目配图 -->
         <div class="case-gallery">
           <figure>
-            <img src="images/projects/mood-1.jpg" alt="心情笔记 macOS 主界面" />
+            <img src="images/projects/cover-mood.jpg" alt="心情笔记 macOS 主界面" loading="lazy" decoding="async" />
             <figcaption>macOS 主界面（菜单栏 + 连续天数）</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/mood-2.jpg" alt="心情笔记 通知栏直接回复" />
+            <img src="images/projects/mood-2.jpg" alt="心情笔记 通知栏直接回复" loading="lazy" decoding="async" />
             <figcaption>Android 版</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/mood-3.jpg" alt="心情笔记 HarmonyOS 版" />
+            <img src="images/projects/mood-3.jpg" alt="心情笔记 HarmonyOS 版" loading="lazy" decoding="async" />
             <figcaption>HarmonyOS NEXT 版（ArkTS）</figcaption>
           </figure>
         </div>
@@ -391,11 +393,11 @@
         <!-- 余白 / 墨間 项目配图 -->
         <div class="case-gallery">
           <figure>
-            <img src="images/projects/yohaku-1.jpg" alt="余白 日间界面" />
+            <img src="images/projects/cover-yohaku.jpg" alt="余白 日间界面" loading="lazy" decoding="async" />
             <figcaption>余白（日间 · 暖纸）</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/yohaku-2.jpg" alt="墨間 夜间界面" />
+            <img src="images/projects/yohaku-2.jpg" alt="墨間 夜间界面" loading="lazy" decoding="async" />
             <figcaption>墨間（夜间 · 墨线）</figcaption>
           </figure>
         </div>
@@ -461,7 +463,7 @@
         <!-- 昼夜 项目配图 -->
         <div class="case-gallery">
           <figure>
-            <img src="images/projects/zhouye-1.jpg" alt="昼夜 Android 待办" />
+            <img src="images/projects/cover-zhouye.jpg" alt="昼夜 Android 待办" loading="lazy" decoding="async" />
             <figcaption>昼夜 Android 版</figcaption>
           </figure>
         </div>
@@ -603,11 +605,11 @@
         <!-- RAG 项目配图（没有截图，先留占位图，有图后替换同名文件） -->
         <div class="case-gallery">
           <figure>
-            <img src="images/projects/rag-1.svg" alt="RAG 系统架构" />
+            <img src="images/projects/rag-1.svg" alt="RAG 系统架构" loading="lazy" decoding="async" />
             <figcaption>系统架构 / 自研链路示意</figcaption>
           </figure>
           <figure>
-            <img src="images/projects/rag-2.svg" alt="RAG 评估结果" />
+            <img src="images/projects/rag-2.svg" alt="RAG 评估结果" loading="lazy" decoding="async" />
             <figcaption>25 题评估集与消融对比结果</figcaption>
           </figure>
         </div>

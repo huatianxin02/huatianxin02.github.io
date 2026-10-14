@@ -11,15 +11,36 @@ const toggleBtn = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
 if (toggleBtn && navLinks) {
+  // 开关菜单，同时把「现在是开着还是关着」告诉读屏软件
+  function setMenu(open) {
+    navLinks.classList.toggle("open", open);
+    toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  toggleBtn.setAttribute("aria-expanded", "false");
+
   toggleBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+    setMenu(!navLinks.classList.contains("open"));
   });
 
   // 点击菜单里的某个链接后，自动收起菜单
   navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-    });
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  // 按 Esc 关掉菜单，并把焦点还给按钮
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navLinks.classList.contains("open")) {
+      setMenu(false);
+      toggleBtn.focus();
+    }
+  });
+
+  // 点菜单外面的地方也关掉
+  document.addEventListener("click", (event) => {
+    if (!navLinks.classList.contains("open")) return;
+    if (navLinks.contains(event.target) || toggleBtn.contains(event.target)) return;
+    setMenu(false);
   });
 }
 
@@ -29,6 +50,8 @@ const themeToggle = document.querySelector(".theme-toggle");
 function applyTheme(theme) {
   const isDark = theme === "dark";
   document.body.classList.toggle("dark", isDark);
+  // 同步告诉浏览器现在是深色，滚动条才会跟着变深
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
   if (themeToggle) {
     // 日间显示「夜」（点了入夜），夜间显示「昼」（点了回到白天）
     themeToggle.textContent = isDark ? "昼" : "夜";
