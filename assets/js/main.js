@@ -68,7 +68,7 @@ if (backToTop) {
   });
 }
 
-/* ---------- 4. 滚动淡入动效（苹果官网那种缓缓浮现） ---------- */
+/* ---------- 4. 滚动淡入动效（滚动到视野里时缓缓浮现） ---------- */
 (function initReveal() {
   // 这些元素会在滚动到视野里时淡入
   const selectors = [
@@ -132,5 +132,3 @@ if (backToTop) {
 
   targets.forEach((el) => observer.observe(el));
 })();
-
-console.log("🌐 华天心的网站已加载");
